@@ -1,0 +1,11 @@
+<div class ="row">
+	<div class= "col-sm-8">
+	<a href="/">&larr; Head back home</a>
+			<h3>{{contact.firstName}} {{contact.lastName}} </h3>
+			<p><strong>Email:</strong> {{contact.email}}</p>
+			<p><strong>Address:</strong> {{contact.streetAddress}}, {{contact.city}}, {{contact.state}}, {{contact.zip}}</p>
+			<p><strong>Phone:</strong> {{contact.phone}}</p>
+			<p><strong>Notes:</strong> {{contact.notes}}</p>
+	</div>
+</div>
+	<button ng-click = "editContact()" class = "btn btn-primary btn-xs"><i class="glyphicon glyphicon-pencil"></i></button>

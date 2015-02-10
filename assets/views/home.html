@@ -1,0 +1,13 @@
+<h1>Contacts</h1>
+<div class ="row">
+	<div class= "col-sm-8">
+	<a href = "/contact/new" class ="btn btn-success pull-right">+</a>
+		<div ng-repeat="contact in contacts">
+			<h3>{{contact.firstName}} {{contact.lastName}} </h3>
+			<a href="/contact/{{contact.id}}"> See more </a>
+			<button ng-click = "deleteContact($index)" class = "btn btn-danger btn-xs">
+			<i class="glyphicon glyphicon-trash"></i></button>
+			<button ng-click = "editContact($index)" class = "btn btn-primary btn-xs"><i class="glyphicon glyphicon-pencil"></i></button>
+		</div>
+	</div>
+</div>
