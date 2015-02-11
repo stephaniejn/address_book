@@ -17,25 +17,32 @@ module.exports = {
   		required:true
   	},
 	email: {
-  		type:'string'
+  		type:'string',
+      required:true
   	},
 	streetAddress: {
-  		type:'string'
+  		type:'string',
+      required:true
   	},
 	city: {
-  		type:'string'
+  		type:'string',
+      required:true
   	},
 	state: {
-  		type:'string'
+  		type:'string',
+      required:true
   	},
 	zip: {
-  		type:'string'
+  		type:'string',
+      required:true
   	},
 	phone: {
-  		type:'string'
+  		type:'string',
+      required:true
   	},
 	notes: {
-  		type:'text'
+  		type:'text',
+      required:true
   	},
   }
 };

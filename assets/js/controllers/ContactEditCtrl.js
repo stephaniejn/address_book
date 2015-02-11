@@ -1,4 +1,4 @@
-addressBookApp.controller('ContactEditModalCtrl', ['$scope', '$http', '$modalInstance', 'contact', function($scope, $http, $modalInstance, contact){
+addressBookApp.controller('ContactEditModalCtrl', ['$scope', '$http', '$modalInstance', 'contact', 'AlertService', function($scope, $http, $modalInstance, contact, AlertService){
 
 	$scope.firstName = contact.firstName
 	$scope.lastName = contact.lastName
@@ -26,6 +26,7 @@ addressBookApp.controller('ContactEditModalCtrl', ['$scope', '$http', '$modalIns
 		
 		$http.put('/.api/contact/'+contact.id,contactData)
 		.success(function(data){
+			AlertService.add('success', 'Post has been updated')
 			$modalInstance.close(data)
 		})
 		.error(function(err){

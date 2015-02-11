@@ -1,14 +1,21 @@
-addressBookApp.controller('HomeCtrl', ['$scope', '$http', '$modal', function($scope, $http, $modal){
+addressBookApp.controller('HomeCtrl', ['$scope', '$http', '$modal', '$location', 'AlertService', function($scope, $http, $modal, $location, AlertService){
 	$scope.contacts = [];
 
-	// var req={
-	// 	url:'/.api/contact/',
-	// 	params:{
-	// 		'sort':'createdAt Desc'
-	// 	}
-	// }
+	var queryData = $location.search();
+	var searchTerm = queryData.q || false;
 
-	$http.get('/.api/contact').success(function(data){
+	var req={
+		url:'/.api/contact/',
+		params:{
+			'sort':'createdAt Desc'
+		}
+	}
+
+	if (searchTerm){
+	req.params.firstName='%'+searchTerm+'%'
+	}
+
+	$http(req).success(function(data){
 		$scope.contacts = data;
 	});
 
@@ -16,6 +23,7 @@ addressBookApp.controller('HomeCtrl', ['$scope', '$http', '$modal', function($sc
 		var contactId= $scope.contacts[idx].id
 		$http.delete('/.api/contact/'+contactId).success(function(data){
 			$scope.contacts.splice(idx,1);
+			AlertService.add('danger', 'Post has been deleted')
 		}).error(function(err){
 			alert(err)
 		})

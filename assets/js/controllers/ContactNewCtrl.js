@@ -1,4 +1,4 @@
-addressBookApp.controller('ContactNewCtrl', ['$scope', '$http', '$routeParams', '$location', function($scope, $http, $routeParams, $location){
+addressBookApp.controller('ContactNewCtrl', ['$scope', '$http', '$routeParams', '$location', 'AlertService', function($scope, $http, $routeParams, $location, AlertService){
 
 	$scope.createContact = function(){
 
@@ -16,7 +16,7 @@ addressBookApp.controller('ContactNewCtrl', ['$scope', '$http', '$routeParams', 
 			notes:$scope.notes
 		}
 		$http.post('/.api/contact',data).success(function(data){
-			$scope.alert="Your Contact has been created.";
+			AlertService.add('success', 'Post has been created')
 			$scope.firstName= "";
 			$scope.lastName= "";
 			$scope.email= "";
@@ -26,6 +26,7 @@ addressBookApp.controller('ContactNewCtrl', ['$scope', '$http', '$routeParams', 
 			$scope.zip= "";
 			$scope.phone= "";
 			$scope.notes= "";
+			$location.path('/');
 
 		}).error(function(err){
 			alert(err);
